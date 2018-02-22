@@ -1,10 +1,12 @@
 package co.iyubinest.conway;
 
+import java.util.List;
+
 interface Matrix<T> {
 
   enum SIZE {
     HORIZONTAL,
-    VERTICAL
+    VERTICAL;
   }
 
   int size(SIZE size);
@@ -17,4 +19,6 @@ interface Matrix<T> {
   T at(int x, int y);
 
   <R> Matrix<R> map(Map<T, R> map);
+
+  List<T> neightbors(int x, int y);
 }

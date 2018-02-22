@@ -1,7 +1,9 @@
 package co.iyubinest.conway;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 final class SquareMatrix<T> implements Matrix<T> {
 
@@ -29,6 +31,18 @@ final class SquareMatrix<T> implements Matrix<T> {
 
   @Override public T at(final int x, final int y) {
     return matrix[y][x];
+  }
+
+  @Override public List<T> neightbors(int x, int y) {
+    List<T> neightbors = new ArrayList<>();
+    for (int row = y - 1; row <= y + 1; row++) {
+      for (int col = x - 1; col <= x + 1; col++) {
+        if (validCell(row, col) && notActualCell(x, y, row, col)) {
+          neightbors.add(at(col, row));
+        }
+      }
+    }
+    return neightbors;
   }
 
   @Override public <R> Matrix<R> map(final Map<T, R> map) {
@@ -64,5 +78,20 @@ final class SquareMatrix<T> implements Matrix<T> {
       }
     }
     return matrix;
+  }
+
+  private boolean notActualCell(final int x, final int y, final int row, final int col) {
+    return !actualCell(x, y, row, col);
+  }
+
+  private boolean actualCell(final int x, final int y, final int row, final int col) {
+    return y == row && x == col;
+  }
+
+  private boolean validCell(final int row, final int col) {
+    return row >= 0 &&
+        row < size(Matrix.SIZE.VERTICAL) &&
+        col >= 0 &&
+        col < size(Matrix.SIZE.HORIZONTAL);
   }
 }
