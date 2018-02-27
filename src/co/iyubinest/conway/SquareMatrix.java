@@ -18,19 +18,16 @@ final class SquareMatrix<T> implements Matrix<T> {
     this.matrix = matrix;
   }
 
-  @Override public int size(final SIZE size) {
-    switch (size) {
-      case VERTICAL:
-        return matrix.length;
-      case HORIZONTAL:
-        return matrix[0].length;
-      default:
-        throw new IllegalArgumentException("Not valid size");
+  private static <T> T[][] matrixFrom(final T[] elements) {
+    int size = (int) Math.sqrt(elements.length);
+    T[][] matrix = (T[][]) new Object[size][size];
+    Iterator<T> iterator = Arrays.asList(elements).iterator();
+    for (int row = 0; row < size; row++) {
+      for (int col = 0; col < size; col++) {
+        matrix[row][col] = iterator.next();
+      }
     }
-  }
-
-  @Override public T at(final int x, final int y) {
-    return matrix[y][x];
+    return matrix;
   }
 
   @Override public List<T> neightbors(int x, int y) {
@@ -53,7 +50,7 @@ final class SquareMatrix<T> implements Matrix<T> {
         newMatrix[row][col] = map.apply(col, row, matrix[row][col]);
       }
     }
-    return new SquareMatrix(newMatrix);
+    return new SquareMatrix<>(newMatrix);
   }
 
   @Override public String toString() {
@@ -68,16 +65,19 @@ final class SquareMatrix<T> implements Matrix<T> {
     return builder.toString();
   }
 
-  private static <T> T[][] matrixFrom(final T[] elements) {
-    int size = (int) Math.sqrt(elements.length);
-    T[][] matrix = (T[][]) new Object[size][size];
-    Iterator<T> iterator = Arrays.asList(elements).iterator();
-    for (int row = 0; row < size; row++) {
-      for (int col = 0; col < size; col++) {
-        matrix[row][col] = iterator.next();
-      }
+  private T at(final int x, final int y) {
+    return matrix[y][x];
+  }
+
+  private int size(final SIZE size) {
+    switch (size) {
+      case VERTICAL:
+        return matrix.length;
+      case HORIZONTAL:
+        return matrix[0].length;
+      default:
+        throw new IllegalArgumentException("Not valid size");
     }
-    return matrix;
   }
 
   private boolean notActualCell(final int x, final int y, final int row, final int col) {

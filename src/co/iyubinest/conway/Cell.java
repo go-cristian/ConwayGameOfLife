@@ -6,7 +6,6 @@ enum Cell {
   DEATH,
   ALIVE;
 
-  private static final String NONE = "";
   private static final String EMPTY = " ";
   private static final String VALUE = "X";
 
@@ -17,18 +16,18 @@ enum Cell {
       case ALIVE:
         return VALUE;
       default:
-        return NONE;
+        throw new IllegalArgumentException("Not supported value");
     }
   }
 
   Cell evolve(List<Cell> neightbors) {
-    int aliveNearby = 0;
+    int nearbyAlive = 0;
     for (Cell cell : neightbors) {
       if (cell == ALIVE) {
-        aliveNearby++;
+        nearbyAlive++;
       }
     }
-    return rules(aliveNearby);
+    return rules(nearbyAlive);
   }
 
   private Cell rules(int aliveNearby) {

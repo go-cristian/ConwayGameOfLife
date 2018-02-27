@@ -7,12 +7,12 @@ import static co.iyubinest.conway.Cell.DEATH;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class WorldShould {
+public class MatrixWorldShould {
 
   @Test
   public void killByLonelinessWithZeroNeighbors() {
     assertThat(
-        RealWorld.create(
+        MatrixWorld.create(
             DEATH, DEATH, DEATH,
             DEATH, ALIVE, DEATH,
             DEATH, DEATH, DEATH
@@ -33,7 +33,7 @@ public class WorldShould {
   @Test
   public void killByOverPopulationWithFourNeighbors() {
     assertThat(
-        RealWorld.create(
+        MatrixWorld.create(
             ALIVE, DEATH, ALIVE,
             DEATH, ALIVE, DEATH,
             ALIVE, DEATH, ALIVE
@@ -54,7 +54,7 @@ public class WorldShould {
   @Test
   public void killByOverPopulationWithFiveNeighbors() {
     assertThat(
-        RealWorld.create(
+        MatrixWorld.create(
             ALIVE, ALIVE, ALIVE,
             DEATH, ALIVE, DEATH,
             ALIVE, DEATH, ALIVE
@@ -75,12 +75,12 @@ public class WorldShould {
   @Test
   public void blinker() {
     assertThat(
-        RealWorld.create(
-            DEATH,DEATH,DEATH,DEATH,DEATH,
-            DEATH,DEATH,ALIVE,DEATH,DEATH,
-            DEATH,DEATH,ALIVE,DEATH,DEATH,
-            DEATH,DEATH,ALIVE,DEATH,DEATH,
-            DEATH,DEATH,DEATH,DEATH,DEATH
+        MatrixWorld.create(
+            DEATH, DEATH, DEATH, DEATH, DEATH,
+            DEATH, DEATH, ALIVE, DEATH, DEATH,
+            DEATH, DEATH, ALIVE, DEATH, DEATH,
+            DEATH, DEATH, ALIVE, DEATH, DEATH,
+            DEATH, DEATH, DEATH, DEATH, DEATH
         )
             .next()
             .toString(),
@@ -100,12 +100,12 @@ public class WorldShould {
   @Test
   public void blinkerBack() {
     assertThat(
-        RealWorld.create(
-            DEATH,DEATH,DEATH,DEATH,DEATH,
-            DEATH,DEATH,DEATH,DEATH,DEATH,
-            DEATH,ALIVE,ALIVE,ALIVE,DEATH,
-            DEATH,DEATH,DEATH,DEATH,DEATH,
-            DEATH,DEATH,DEATH,DEATH,DEATH
+        MatrixWorld.create(
+            DEATH, DEATH, DEATH, DEATH, DEATH,
+            DEATH, DEATH, DEATH, DEATH, DEATH,
+            DEATH, ALIVE, ALIVE, ALIVE, DEATH,
+            DEATH, DEATH, DEATH, DEATH, DEATH,
+            DEATH, DEATH, DEATH, DEATH, DEATH
         )
             .next()
             .toString(),
@@ -125,13 +125,13 @@ public class WorldShould {
   @Test
   public void beacon() {
     assertThat(
-        RealWorld.create(
-            DEATH,DEATH,DEATH,DEATH,DEATH,DEATH,
-            DEATH,ALIVE,ALIVE,DEATH,DEATH,DEATH,
-            DEATH,ALIVE,ALIVE,DEATH,DEATH,DEATH,
-            DEATH,DEATH,DEATH,ALIVE,ALIVE,DEATH,
-            DEATH,DEATH,DEATH,ALIVE,ALIVE,DEATH,
-            DEATH,DEATH,DEATH,DEATH,DEATH,DEATH
+        MatrixWorld.create(
+            DEATH, DEATH, DEATH, DEATH, DEATH, DEATH,
+            DEATH, ALIVE, ALIVE, DEATH, DEATH, DEATH,
+            DEATH, ALIVE, ALIVE, DEATH, DEATH, DEATH,
+            DEATH, DEATH, DEATH, ALIVE, ALIVE, DEATH,
+            DEATH, DEATH, DEATH, ALIVE, ALIVE, DEATH,
+            DEATH, DEATH, DEATH, DEATH, DEATH, DEATH
         )
             .next()
             .toString(),
@@ -152,13 +152,13 @@ public class WorldShould {
   @Test
   public void beaconBack() {
     assertThat(
-        RealWorld.create(
-            DEATH,DEATH,DEATH,DEATH,DEATH,DEATH,
-            DEATH,ALIVE,ALIVE,DEATH,DEATH,DEATH,
-            DEATH,ALIVE,DEATH,DEATH,DEATH,DEATH,
-            DEATH,DEATH,DEATH,DEATH,ALIVE,DEATH,
-            DEATH,DEATH,DEATH,ALIVE,ALIVE,DEATH,
-            DEATH,DEATH,DEATH,DEATH,DEATH,DEATH
+        MatrixWorld.create(
+            DEATH, DEATH, DEATH, DEATH, DEATH, DEATH,
+            DEATH, ALIVE, ALIVE, DEATH, DEATH, DEATH,
+            DEATH, ALIVE, DEATH, DEATH, DEATH, DEATH,
+            DEATH, DEATH, DEATH, DEATH, ALIVE, DEATH,
+            DEATH, DEATH, DEATH, ALIVE, ALIVE, DEATH,
+            DEATH, DEATH, DEATH, DEATH, DEATH, DEATH
         )
             .next()
             .toString(),
