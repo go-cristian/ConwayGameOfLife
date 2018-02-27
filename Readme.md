@@ -8,7 +8,12 @@ Implementation for the famous game of life. This projects is a result from the
 #### World Class
 
 The main idea of the world instance is to evolve with every step, and every call to `next()` 
-should create a new World state, based on a true inmutable object.
+should create a new World state, based on a true immutable object.
+
+#### File based
+
+When using the `FileWorld` class you can use the same functionality as the `RealWorld` class, so 
+now you can provide an String with the file path, to load the entire game. 
 
 #### Game Class
 
