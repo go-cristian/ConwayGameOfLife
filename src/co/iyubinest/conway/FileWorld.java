@@ -18,7 +18,7 @@ final class FileWorld implements World {
   }
 
   private static Matrix contentOf(String filename) throws IOException {
-    final SimpleMatrix.Builder<Cell> builder = new SimpleMatrix.Builder<>();
+    final SquareMatrix.Builder<Cell> builder = new SquareMatrix.Builder<>();
     List<String> lines = Files.readAllLines(Paths.get(filename));
     for (int lineIndex = 0; lineIndex < lines.size(); lineIndex++) {
       String line = lines.get(lineIndex);
